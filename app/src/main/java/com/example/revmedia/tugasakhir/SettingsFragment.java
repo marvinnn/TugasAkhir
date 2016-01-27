@@ -7,12 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * Created by Marvin Zeson on 1/25/2016.
+ * Created by Marvin Zeson on 1/26/2016.
  */
-public class PreferencesFragment extends Fragment {
+
+public class SettingsFragment extends Fragment {
 
 
-    public PreferencesFragment() {
+    public SettingsFragment() {
         // Required empty public constructor
     }
 
@@ -21,7 +22,7 @@ public class PreferencesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_preferences, container, false);
+        return inflater.inflate(R.layout.fragment_settings, container, false);
     }
 
 
