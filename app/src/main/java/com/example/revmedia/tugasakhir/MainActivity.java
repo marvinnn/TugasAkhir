@@ -7,8 +7,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +18,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     private static String TAG = MainActivity.class.getSimpleName();
@@ -37,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mNavItems.add(new NavItem("Home", "Meetup destination", R.drawable.ic_menu_home));
-        mNavItems.add(new NavItem("Preferences", "Change your preferences", R.drawable.ic_menu_settings));
+        mNavItems.add(new NavItem("Home", "Start here", R.drawable.ic_menu_home));
+        mNavItems.add(new NavItem("Category", "Choose article category", R.drawable.ic_menu_settings));
         mNavItems.add(new NavItem("About", "Get to know about us", R.drawable.ic_menu_about));
 
         // DrawerLayout
@@ -130,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
         else if(position == 1){
-            Fragment fragment = new SettingsFragment();
+            Fragment fragment = new CategoryFragment();
 
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction()
