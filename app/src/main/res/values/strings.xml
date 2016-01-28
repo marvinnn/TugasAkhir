@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Tugas Akhir</string>
+
+    <string name="gunung">Gunung</string>
+    <string name="pantai">Pantai</string>
+    <string name="candi">Candi</string>
+    <string name="hotel">Hotel</string>
+    <string name="kuliner">Kuliner</string>
 </resources>
