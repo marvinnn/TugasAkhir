@@ -1,4 +1,4 @@
-package com.example.revmedia.tugasakhir;
+package com.revmedia.tugasakhir.tugasakhir;
 
 import org.junit.Test;
 

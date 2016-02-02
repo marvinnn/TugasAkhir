@@ -1,4 +1,4 @@
-package com.example.revmedia.tugasakhir;
+package com.revmedia.tugasakhir;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.revmedia.tugasakhir.R;
 
 import java.util.ArrayList;
 

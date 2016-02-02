@@ -1,4 +1,4 @@
-package com.example.revmedia.tugasakhir;
+package com.revmedia.tugasakhir.tugasakhir;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

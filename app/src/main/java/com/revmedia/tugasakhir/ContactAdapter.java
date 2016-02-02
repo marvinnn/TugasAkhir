@@ -1,10 +1,12 @@
-package com.example.revmedia.tugasakhir;
+package com.revmedia.tugasakhir;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.revmedia.tugasakhir.R;
 
 import java.util.List;
 

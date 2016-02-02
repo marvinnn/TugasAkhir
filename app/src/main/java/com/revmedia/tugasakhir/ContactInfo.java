@@ -1,4 +1,4 @@
-package com.example.revmedia.tugasakhir;
+package com.revmedia.tugasakhir;
 
 /**
  * Created by Marvin Zeson on 1/26/2016.
