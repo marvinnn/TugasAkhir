@@ -3,6 +3,7 @@ package com.revmedia.tugasakhir;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.support.v4.util.Pair;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -143,6 +144,8 @@ public class MainActivity extends AppCompatActivity {
             fragmentManager.beginTransaction()
                     .replace(R.id.mainContent, fragment)
                     .commit();
+
+            new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Marv"));
         }
         /*Fragment fragment = new HomeFragment();
 
