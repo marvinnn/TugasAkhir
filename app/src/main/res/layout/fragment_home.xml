@@ -9,7 +9,7 @@
     tools:context="com.looper.loop.PreferencesFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <android.support.v7.widget.RecyclerView
+    <ListView
         android:id="@+id/homeCardList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
