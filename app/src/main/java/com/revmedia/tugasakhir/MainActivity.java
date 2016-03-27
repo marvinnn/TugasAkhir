@@ -39,7 +39,14 @@ public class MainActivity extends AppCompatActivity {
 
         mNavItems.add(new NavItem("Home", "Start here", R.drawable.ic_menu_home));
         mNavItems.add(new NavItem("Category", "Choose article category", R.drawable.ic_menu_settings));
-        mNavItems.add(new NavItem("About", "Get to know about us", R.drawable.ic_menu_about));
+        mNavItems.add(new NavItem("Search", "Find Article", R.drawable.ic_menu_about));
+
+        Fragment fragment = new HomeFragment();
+
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .replace(R.id.mainContent, fragment)
+                .commit();
 
         // DrawerLayout
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -55,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectItemFromDrawer(position);
+
+
             }
         });
     }

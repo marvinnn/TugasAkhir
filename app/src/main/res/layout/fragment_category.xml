@@ -18,7 +18,7 @@
             android:background="@drawable/gunung"
             android:layout_weight="0.2"
             android:gravity="center"
-            android:layout_marginBottom="5dp"
+            android:alpha="0.5"
             />
         <Button
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             android:layout_weight="0.2"
             android:background="@drawable/pantai"
             android:gravity="center"
-            android:layout_marginBottom="5dp"
+            android:alpha="0.5"
             />
         <Button
             android:layout_width="match_parent"
@@ -42,7 +42,7 @@
             android:layout_weight="0.2"
             android:background="@drawable/candi"
             android:gravity="center"
-            android:layout_marginBottom="5dp"
+            android:alpha="0.5"
             />
         <Button
             android:layout_width="match_parent"
@@ -54,7 +54,7 @@
             android:layout_weight="0.2"
             android:background="@drawable/hotel"
             android:gravity="center"
-            android:layout_marginBottom="5dp"
+            android:alpha="0.5"
             />
         <Button
             android:layout_width="match_parent"
@@ -66,7 +66,7 @@
             android:layout_weight="0.2"
             android:background="@drawable/kuliner"
             android:gravity="center"
-            android:layout_marginBottom="5dp"
+            android:alpha="0.5"
             />
     </LinearLayout>
 

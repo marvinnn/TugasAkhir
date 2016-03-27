@@ -41,7 +41,7 @@ public class HomeFragment extends Fragment {
 
         Firebase.setAndroidContext(getActivity());
 
-        new Firebase("https://tugasakhir.firebaseio.com/Artikel")
+        new Firebase("https://tugasakhir.firebaseio.com/DestinasiWisata")
                 .addChildEventListener(new ChildEventListener() {
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                         adapter.add((String) dataSnapshot.child("Judul").getValue());
