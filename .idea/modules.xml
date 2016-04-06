@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/TugasAkhir.iml" filepath="$PROJECT_DIR$/TugasAkhir.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/backend/backend.iml" filepath="$PROJECT_DIR$/backend/backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ksoap2-android-3.6.0/ksoap2-android-3.6.0.iml" filepath="$PROJECT_DIR$/ksoap2-android-3.6.0/ksoap2-android-3.6.0.iml" />
     </modules>
   </component>
 </project>

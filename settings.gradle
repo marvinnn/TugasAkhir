@@ -1,1 +1,1 @@
-include ':app', ':backend'
+include ':app', ':backend', ':ksoap2-android-3.6.0'

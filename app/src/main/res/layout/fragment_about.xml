@@ -5,9 +5,18 @@
 
     <!-- TODO: Update blank fragment layout -->
     <SearchView
+        android:id="@+id/doSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:queryHint="Search Here"
-        android:iconifiedByDefault="false"></SearchView>
+        android:iconifiedByDefault="false"
+        android:onClick="searchCommited"/>
+
+    <TextView
+        android:id="@+id/debugTextview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This is"
+        android:textSize="20sp"/>
 
 </FrameLayout>
