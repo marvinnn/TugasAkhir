@@ -3,6 +3,7 @@ package com.revmedia.tugasakhir;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.support.v4.util.Pair;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -183,7 +184,9 @@ public class MainActivity extends AppCompatActivity {
     public void searchCommited(View view){
         final SearchView sv = (SearchView)findViewById(R.id.doSearch);
         String query = sv.getQuery().toString();
-        List<String> coba = getServiceResponse(query);
+        //List<String> coba = getServiceResponse(query);
+        AsyncTaskRunner runner = new AsyncTaskRunner();
+        runner.execute(query);
     }
 
     public List<String> getServiceResponse(String query){
@@ -191,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
         String NAMESPACE = "http://service.fuzzy.com/";
         String METHOD_NAME = "doSearch";
         String SOAP_ACTION = "http://service.fuzzy.com/doSearch";
-        String URL = "http://10.0.2.2:8080/FuzzyWebService/FuzzyService";
+        String URL = "http://192.168.1.6:8080/FuzzyWebService/FuzzyService";
 
         SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
         PropertyInfo p = new PropertyInfo();
@@ -221,5 +224,65 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         return titles;
+    }
+
+    private class AsyncTaskRunner extends AsyncTask<String, Void, List<String>> {
+
+        private String resp;
+        @Override
+        protected List<String> doInBackground(String... params) {
+            List<String> titles = new ArrayList<>();
+            String NAMESPACE = "http://service.fuzzy.com/";
+            String METHOD_NAME = "doSearch";
+            String SOAP_ACTION = "http://service.fuzzy.com/doSearch";
+            String URL = "http://192.168.1.6:8080/FuzzyWebService/FuzzyService";
+
+            SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
+            PropertyInfo p = new PropertyInfo();
+            p.setName("querry");
+            p.setValue(params[0]);
+            p.setType(String.class);
+
+            request.addProperty(p);
+
+            SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(SoapEnvelope.VER11);
+
+            envelope.setOutputSoapObject(request);
+            HttpTransportSE androidHttpTransport = new HttpTransportSE(URL);
+
+            try {
+                androidHttpTransport.call(SOAP_ACTION, envelope);
+                SoapObject resultRequest = (SoapObject)envelope.bodyIn;
+
+                for(int i = 0;i < resultRequest.getPropertyCount();i++){
+                    titles.add(resultRequest.getProperty(i).toString());
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (XmlPullParserException e) {
+                e.printStackTrace();
+            }
+            return titles;
+        }
+
+        /**
+         *
+         * @see android.os.AsyncTask#onPostExecute(java.lang.Object)
+         */
+        @Override
+        protected void onPostExecute(List<String> result) {
+            // execution of result of Long time consuming operation
+            // In this example it is the return value from the web service
+            TextView tv = (TextView)findViewById(R.id.debugTextview);
+            if(result.size() != 0){
+                tv.setText("Berhasil");
+            }
+
+        }
+
+        /**
+         *
+         * @see android.os.AsyncTask#onPreExecute()
+         */
     }
 }
