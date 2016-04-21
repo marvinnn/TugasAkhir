@@ -2,6 +2,8 @@ package com.revmedia.tugasakhir;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,8 +38,14 @@ public class AboutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        View rootView = inflater.inflate(R.layout.fragment_about, container, false);;
+        RecyclerView recList = (RecyclerView)rootView.findViewById(R.id.cardList);
+        recList.setHasFixedSize(true);
+        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        recList.setLayoutManager(llm);
 
-        return inflater.inflate(R.layout.fragment_about, container, false);
+        return rootView;
     }
 
 

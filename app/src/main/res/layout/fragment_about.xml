@@ -4,19 +4,24 @@
     android:layout_height="match_parent" tools:context="com.looper.loop.PreferencesFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <SearchView
-        android:id="@+id/doSearch"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:queryHint="Search Here"
-        android:iconifiedByDefault="false"
-        android:onClick="searchCommited"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <SearchView
+            android:id="@+id/doSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:queryHint="Search Here"
+            android:iconifiedByDefault="false"
+            android:onClick="searchCommited"/>
 
-    <TextView
-        android:id="@+id/debugTextview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="This is"
-        android:textSize="20sp"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/cardList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </LinearLayout>
+
 
 </FrameLayout>

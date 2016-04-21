@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment {
         final ArrayAdapter adapter = new ArrayAdapter<>(getActivity(),
                 android.R.layout.simple_list_item_1, android.R.id.text1);
 
-        //ContactAdapter adapter = new ContactAdapter(createList(30));
+        //ArticleAdapter adapter = new ArticleAdapter(createList(30));
         recList.setAdapter(adapter);
 
         Firebase.setAndroidContext(getActivity());
@@ -64,19 +64,5 @@ public class HomeFragment extends Fragment {
         //return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
-    private List<ContactInfo> createList(int size) {
 
-        List<ContactInfo> result = new ArrayList<ContactInfo>();
-        for (int i=1; i <= size; i++) {
-            ContactInfo ci = new ContactInfo();
-            ci.name = ContactInfo.NAME_PREFIX + i;
-            ci.surname = ContactInfo.SURNAME_PREFIX + i;
-            ci.email = ContactInfo.EMAIL_PREFIX + i + "@test.com";
-
-            result.add(ci);
-
-        }
-
-        return result;
-    }
 }
