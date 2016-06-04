@@ -8,12 +8,14 @@ public class Article {
     private String articleTfIdf;
     private String articleTitle;
     private String articleContent;
+    private String articleSummary;
 
     public Article(int articleIndex, String articleTfIdf, String articleTitle, String articleContent) {
         this.articleIndex = articleIndex;
         this.articleTfIdf = articleTfIdf;
         this.articleTitle = articleTitle;
         this.articleContent = articleContent;
+        this.articleSummary = articleContent.substring(0, Math.min(articleContent.length(), 100));
     }
 
     public int getArticleIndex() {
@@ -32,6 +34,10 @@ public class Article {
 
     public String getArticleContent(){
         return this.articleContent;
+    }
+
+    public String getArticleSummary(){
+        return this.articleSummary;
     }
 
     private double convertStringToDouble(String str) {

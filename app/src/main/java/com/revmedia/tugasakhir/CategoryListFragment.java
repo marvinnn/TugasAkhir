@@ -1,20 +1,14 @@
 package com.revmedia.tugasakhir;
 
-import android.app.Fragment;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
-import com.firebase.client.ChildEventListener;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.PropertyInfo;
@@ -27,13 +21,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 /**
- * Created by Marvin Zeson on 1/25/2016.
+ * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class CategoryListFragment extends Fragment {
     View view;
 
-    public HomeFragment() {
+    public CategoryListFragment() {
         // Required empty public constructor
     }
 
@@ -41,17 +36,16 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_home, container, false);
-        RecyclerView recList = (RecyclerView)view.findViewById(R.id.homeCardList);
+        String getCategory = getArguments().getString("stringCategory");
+        view = inflater.inflate(R.layout.fragment_category_list, container, false);
+        RecyclerView recList = (RecyclerView)view.findViewById(R.id.cardListCategory);
         recList.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recList.setLayoutManager(llm);
         AsyncTaskRunner runner = new AsyncTaskRunner();
-        runner.execute("input");
+        runner.execute(getCategory);
         return view;
-        //return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     private class AsyncTaskRunner extends AsyncTask<String, Void, List<ArticleInfo>> {
@@ -61,13 +55,13 @@ public class HomeFragment extends Fragment {
         protected List<ArticleInfo> doInBackground(String... params) {
             ArrayList<String> titles = new ArrayList<>();
             String NAMESPACE = "http://service.fuzzy.com/";
-            String METHOD_NAME = "getRandom";
-            String SOAP_ACTION = "http://service.fuzzy.com/getRandom";
+            String METHOD_NAME = "getCategory";
+            String SOAP_ACTION = "http://service.fuzzy.com/getCategory";
             String URL = "http://10.0.2.2:8080/FuzzyWebService/FuzzyService";
 
             SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
             PropertyInfo p = new PropertyInfo();
-            p.setName("input");
+            p.setName("category");
             p.setValue(params[0]);
             p.setType(String.class);
 
@@ -114,7 +108,7 @@ public class HomeFragment extends Fragment {
         protected void onPostExecute(List<ArticleInfo> result) {
             // execution of result of Long time consuming operation
             // In this example it is the return value from the web service
-            RecyclerView artList = (RecyclerView)view.findViewById(R.id.homeCardList);
+            RecyclerView artList = (RecyclerView)view.findViewById(R.id.cardListCategory);
             ArticleAdapter adapter = new ArticleAdapter(getContext(), result);
             //ArrayAdapter adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, result);
             artList.setAdapter(adapter);
@@ -126,4 +120,5 @@ public class HomeFragment extends Fragment {
          * @see android.os.AsyncTask#onPreExecute()
          */
     }
+
 }

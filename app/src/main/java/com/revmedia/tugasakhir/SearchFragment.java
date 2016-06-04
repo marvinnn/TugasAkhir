@@ -27,9 +27,9 @@ import java.util.Objects;
  * Created by Marvin Zeson on 1/26/2016.
  */
 
-public class AboutFragment extends Fragment {
+public class SearchFragment extends Fragment {
 
-    public AboutFragment() {
+    public SearchFragment() {
         // Required empty public constructor
     }
 

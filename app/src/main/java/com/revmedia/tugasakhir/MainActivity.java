@@ -4,7 +4,6 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v4.util.Pair;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -14,16 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
-
-import com.revmedia.tugasakhir.R;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.PropertyInfo;
@@ -43,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout mDrawerPane;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
+    private Context context = this;
 
     ArrayList<NavItem> mNavItems = new ArrayList<NavItem>();
 
@@ -161,14 +157,14 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
         }
         else if(position == 2){
-            Fragment fragment = new AboutFragment();
+            Fragment fragment = new SearchFragment();
 
             FragmentManager fragmentManager = getFragmentManager();
             fragmentManager.beginTransaction()
                     .replace(R.id.mainContent, fragment)
                     .commit();
 
-            new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Marv"));
+            //new EndpointsAsyncTask().execute(new Pair<Context, String>(this, "Marv"));
         }
         /*Fragment fragment = new HomeFragment();
 
@@ -203,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
             String NAMESPACE = "http://service.fuzzy.com/";
             String METHOD_NAME = "doSearch";
             String SOAP_ACTION = "http://service.fuzzy.com/doSearch";
-            String URL = "http://192.168.1.7:8080/FuzzyWebService/FuzzyService";
+            String URL = "http://10.0.2.2:8080/FuzzyWebService/FuzzyService";
 
             SoapObject request = new SoapObject(NAMESPACE, METHOD_NAME);
             PropertyInfo p = new PropertyInfo();
@@ -231,6 +227,8 @@ public class MainActivity extends AppCompatActivity {
                         ArticleInfo ai = new ArticleInfo();
                         ai.title = finalObject.getProperty("articleTitle").toString();
                         ai.content = finalObject.getProperty("articleContent").toString();
+                        ai.summary = ai.content.substring(0, Math.min(ai.content.length(), 150));
+                        ai.category = finalObject.getProperty("articleCategory").toString();
                         //titles.add(finalObject.getProperty("articleTitle").toString());
                         result.add(ai);
                     }
@@ -253,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
             // execution of result of Long time consuming operation
             // In this example it is the return value from the web service
             RecyclerView artList = (RecyclerView)findViewById(R.id.cardList);
-            ArticleAdapter adapter = new ArticleAdapter(result);
+            ArticleAdapter adapter = new ArticleAdapter(context, result);
             //ArrayAdapter adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_list_item_1, result);
             artList.setAdapter(adapter);
             adapter.notifyDataSetChanged();
